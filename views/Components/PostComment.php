@@ -27,6 +27,6 @@ use App\Framework\Auth;
             </form>
         </div>
     <?php else : ?>
-        <h3>Kamu tidak bisa berkomentar karena belum login</h3>
+        <h3>Kamu tidak bisa berkomentar karena belum <a href="<?= route('login') ?>">login</a></h3>
     <?php endif ?>
 </div>

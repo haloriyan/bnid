@@ -122,11 +122,25 @@ class UserController {
     public function read($slug) {
         $myData = self::me();
         $post = PostController::get([
-            ['slug', 'LIKE', '%'.$slug.'%']
+            ['slug', '=', $slug]
         ])->first();
+        $postCategories = explode(",", $post->categories);
         $comments = CommentCtrl::get([
             ['post_id', '=', $post->id]
         ])->get();
+
+        $relatedPosts = [];
+        foreach ($postCategories as $category) {
+            $getRelatedPost = PostCtrl::get([
+                ['categories', 'LIKE', '%'.$postCategories[1].'%'],
+                ['id', '!=', $post->id]
+            ])->paginate(2)->get();
+            foreach ($getRelatedPost as $p) {
+                if (!in_array($p, $relatedPosts)) {
+                    array_push($relatedPosts, $p);
+                }
+            }
+        }
 
         if ($post == "") {
             return view("error.404");
@@ -146,7 +160,8 @@ class UserController {
 
         return view('read', [
             'post' => $post,
-            'comments' => $comments
+            'comments' => $comments,
+            'relatedPosts' => $relatedPosts
         ]);
     }
     public function search(Request $req) {

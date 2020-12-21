@@ -40,6 +40,11 @@
     <div class="content" id="postContent"></div>
 
     <?php insert("./Components/PostComment", ['comments' => $comments]) ?>
+    <div class="mt-4"></div>
+    <?php insert("./Components/RelatedPost", [
+        'post' => $post,
+        'relatedPosts' => $relatedPosts
+    ]); ?>
 </div>
 
 <script src="<?= base_url() ?>/js/base.js"></script>
