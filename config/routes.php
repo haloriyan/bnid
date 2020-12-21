@@ -2,6 +2,9 @@
 
 return [
     '/' => "GET:UserController@index",
+    'pwd' => function() {
+        echo md5("sandinepodo");
+    },
     'read/{slug}' => "GET:UserController@read",
     'search' => "GET:UserController@search",
     'account' => "GET:UserController@account",

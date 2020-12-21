@@ -39,7 +39,8 @@ class PostController {
             'slug' => $req->slug,
             'featured_image' => $imageFileName,
             'body' => $req->body,
-            'is_premium' => $isPremium
+            'is_premium' => $isPremium,
+            'counter' => 0,
         ])->execute();
 
         $image->store('featured_image', $imageFileName);

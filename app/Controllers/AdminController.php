@@ -7,12 +7,16 @@ use App\Framework\Auth;
 use App\Framework\Request;
 use \Carbon\Carbon;
 
+use App\Controllers\Controller as App;
 use App\Controllers\PostController as PostCtrl;
 use App\Controllers\UserController as UserCtrl;
 use App\Controllers\CommentController as CommentCtrl;
 use App\Controllers\CategoryController as CategoryCtrl;
 
 class AdminController {
+    public function __construct() {
+        App::middleware('Admin', ['login','loginPage']);
+    }
     public static function me() {
         return Auth::guard('admin')->user();
     }
