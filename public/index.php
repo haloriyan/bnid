@@ -67,7 +67,9 @@ function bindParams() {
 	}
 	return $params;
 }
-bindParams();
+if (@$_SERVER['QUERY_STRING']) {
+	bindParams();
+}
 
 function base_url() {
     return env('BASE_URL');

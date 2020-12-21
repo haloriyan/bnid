@@ -14,10 +14,10 @@ class DB {
 	public function koneksi() {
 		/* You can edit this on /.env */
 		global $dbHost,$dbUser,$dbPass,$dbName;
-		$dbHost = env('DB_HOST');
+        $dbHost = env('DB_HOST');
         $dbUser = env('DB_USER');
         $dbPass = env('DB_PASS');
-		$dbName = env('DB_NAME');
+        $dbName = env('DB_NAME');
 		
         $this->koneksi = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
 	}
@@ -194,12 +194,16 @@ class DB {
         }
         return $this;
 	}
-	public function query($qry, $realQuery = NULL) {
+	public static function query($qry, $realQuery = NULL) {
         $dbHost = env('DB_HOST');
         $dbUser = env('DB_USER');
         $dbPass = env('DB_PASS');
-		$dbName = env('DB_NAME');
+        $dbName = env('DB_NAME');
         $conn = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
+        if (!$conn) {
+            echo mysqli_connect_error();
+            die();
+        }
 		if ($realQuery != NULL) {
             $run = mysqli_query($qry, $realQuery);
             $res = [];
@@ -324,17 +328,17 @@ class DB {
         if (count(self::$paginationLinks) > 1) {
             echo "<div class='pagination_links'>";
             if ($prev >= 1) {
-                echo "<a href='".base_url().route()."?page=".$prev."'><div class='items'><i class='fas fa-angle-left'></i></i></div></a>";
+                echo "<a href='".base_url()."/".route()."?page=".$prev."'><div class='items'><i class='fas fa-angle-left'></i></i></div></a>";
             }
             for ($i = 1; $i <= count(self::$paginationLinks); $i++) {
                 if ($page != $i) {
-                    echo "<a href='".base_url().route()."?page=$i'><div class='items'>$i</div></a>";
+                    echo "<a href='".base_url()."/".route()."?page=$i'><div class='items'>$i</div></a>";
                 }else {
                     echo "<div class='items active'>$i</div>";
                 }
             }
             if ($next <= count(self::$paginationLinks)) {
-                echo "<a href='".base_url().route()."?page=".$next."'><div class='items'><i class='fas fa-angle-right'></i></i></div></a>";
+                echo "<a href='".base_url()."/".route()."?page=".$next."'><div class='items'><i class='fas fa-angle-right'></i></i></div></a>";
             }
             echo "</div>";
         }

@@ -1,0 +1,127 @@
+body {
+    background-color: #fff;
+}
+header {
+    position: fixed;
+    top: 0px;left: 0px;right: 0px;
+    line-height: 60px;
+    border-bottom: 1px solid #ddd;
+    z-index: 2;
+    background-color: #fff;
+}
+header #menuBtn {
+    float: left;
+    margin-left: 5%;
+    font-size: 20px;
+    cursor: pointer;
+}
+header h1 {
+    float: left;
+    font-size: 22px;
+    margin: 0;
+    margin-left: 2.5%;
+}
+header #notif {
+    float: right;
+    margin-right: 5%;
+    cursor: pointer;
+}
+header button {
+    float: right;
+    margin-right: 5%;
+    margin-top: 7px;
+    padding: 0px 25px;
+    height: 45px;
+}
+
+header #notifArea {
+    position: fixed;
+    top: 50px;right: 2.5%;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    width: 20%;
+    border-radius: 6px;
+    display: none;
+}
+
+header #notifArea .items {
+    padding: 0px 25px;
+    box-sizing: border-box;
+}
+
+nav {
+    position: fixed;
+    top: 60px;left: 0px;bottom: 0px;
+    width: 25%;
+    border-right: 1px solid #ddd;
+    transition: 0.6s;
+    z-index: 1;
+    background-color: #fff;
+    overflow: auto;
+}
+nav::-webkit-scrollbar {
+    width: 7px;
+    background-color: #ddd;
+}
+nav::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 90px;
+}
+nav li {
+    list-style: none;
+    line-height: 55px;
+    margin: 15px 20px;
+    padding: 0px 30px;
+    border-radius: 6px;
+    transition: 0.4s;
+}
+nav li ul {
+    display: none;
+}
+nav li ul li {
+    margin: 0px;
+    padding: 0px;
+}
+nav li:hover ul {
+    display: block;
+}
+nav li .icon {
+    display: inline-block;
+    width: 40px;
+}
+nav a {
+    color: #444;
+}
+
+.container {
+    position: absolute;
+    top: 110px;left: 30%;right: 5%;
+    padding-bottom: 65px;
+}
+
+.facility .icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 900px;
+    display: inline-block;
+    margin-top: -65px;
+}
+
+@media (max-width: 480px) {
+    #menuBtn, header h1 {
+        margin-left: 5%;
+    }
+    nav {
+        width: 80%;
+    }
+    .container { top: 75px; }
+    header button { width: 35% !important; }
+
+    header button {
+        position: fixed;
+        bottom: 0%;right: 0%;left: 0%;
+        width: 100% !important;
+        border-radius: 0px;
+        height: 50px !important;
+    }
+}

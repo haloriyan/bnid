@@ -1,26 +1,88 @@
 {
 	"table": {
-		"users": [
+		"admins": [
 			"id int(11) not null",
 			"name varchar(50) not null",
 			"email varchar(50) not null",
 			"password varchar(50) not null",
+			"photo varchar(155) not null",
+			"bio text not null",
+			"created_at TIMESTAMP not null"
+		],
+		"users": [
+			"id int(11) not null",
+			"name varchar(255) not null",
+			"email varchar(255) not null",
+			"password varchar(255) not null",
+			"favorite_categories varchar(255) null",
+			"status int(1) null",
+			"premium_until date null",
+			"created_at TIMESTAMP not null"
+		],
+		"categories": [
+			"id int(11) not null",
+			"category varchar(155) not null",
+			"counter int(11) not null",
 			"created_at TIMESTAMP not null"
 		],
 		"posts": [
 			"id int(11) not null",
-			"user_id int(11) not null",
+			"admin_id int(11) not null",
+			"categories varchar(355) not null",
 			"title varchar(255) not null",
-			"body text not null",
+			"slug varchar(255) not null",
+			"featured_image varchar(255) not null",
+			"body longtext not null",
+			"is_premium int(1) null",
+			"counter int(12) null",
+			"created_at TIMESTAMP not null"
+		],
+		"comments": [
+			"id int(11) not null",
+			"user_id int(11) not null",
+			"post_id int(11) not null",
+			"body varchar(255) not null",
+			"created_at TIMESTAMP not null"
+		],
+		"histories": [
+			"id bigint not null",
+			"user_id int(11) not null",
+			"post_id int(11) not null",
+			"counter int(11) not null",
+			"updated_at TIMESTAMP not null",
+			"created_at TIMESTAMP not null"
+		],
+		"medias": [
+			"id int(11) not null",
+			"filename varchar(255) not null",
+			"size int(25) not null",
+			"created_at TIMESTAMP not null"
+		],
+		"premium_requests": [
+			"id int(11) not null",
+			"user_id int(11) not null",
+			"evidence varchar(255) not null",
+			"status int(1) not null",
 			"created_at TIMESTAMP not null"
 		]
 	},
 	"attribute": {
 		"PRIMARY": [
-			"users.id"
+			"admins.id",
+			"users.id",
+			"categories.id",
+			"histories.id",
+			"comments.id",
+			"premium_requests.id",
+			"posts.id"
 		],
 		"FOREIGN": [
-			"posts.user_id=>users.id"
+			"histories.user_id=>users.id",
+			"histories.post_id=>posts.id",
+			"comments.post_id=>posts.id",
+			"comments.user_id=>users.id",
+			"premium_requests.user_id=>users.id",
+			"posts.admin_id=>admins.id"
 		]
 	}
 }

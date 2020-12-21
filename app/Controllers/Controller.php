@@ -4,6 +4,8 @@ namespace App\Controllers;
 include '../app/Framework/autoload.php';
 include '../app/Framework/vendor/autoload.php';
 
+use App\Framework\DB;
+
 class Controller {
 	private static $_instance = null;
 
@@ -89,7 +91,7 @@ class Controller {
 	}
 
 	public function migrate() {
-		$ctrl = new DB();
+		// $ctrl = new DB();
 		$migration = file_get_contents("../migration.json");
 		$db = json_decode($migration, true);
 
@@ -105,8 +107,8 @@ class Controller {
 			}
 			$queryTable .= " dummy int(1) not null);";
 			// echo $queryTable."<br />";
-			$ctrl->query($queryTable);
-			$delDummy = $ctrl->query("ALTER TABLE {$tableName} DROP dummy");
+			DB::query($queryTable);
+			$delDummy = DB::query("ALTER TABLE {$tableName} DROP dummy");
 			echo "Table {$tableName} : $queryTable created <br />";
 		}
 
@@ -124,14 +126,14 @@ class Controller {
 					$ta[1] = explode(".", $f[1]);
 					$queryAttribute .= "({$ta[0][1]}) REFERENCES {$ta[1][0]}({$ta[1][1]})";
 				}
-				$addingAttribute = $ctrl->query($queryAttribute);
+				$addingAttribute = DB::query($queryAttribute);
 				echo "Table {$t[0]} changed : {$queryAttribute} <br />";
 
 				// add auto_increment
 				if ($addingAttribute) {
 					if (strtolower($key) == "primary") {
 						$queryAi = "ALTER TABLE {$t[0]} MODIFY {$t[1]} INTEGER AUTO_INCREMENT";
-						$ctrl->query($queryAi);
+						DB::query($queryAi);
 						echo "Table {$t[0]} added auto increment on {$t[1]} : {$queryAi}<br />";
 					}
 				}

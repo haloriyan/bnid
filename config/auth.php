@@ -5,5 +5,8 @@ return [
         'user' => [
             'table' => "users"
         ],
+        'admin' => [
+            'table' => "admins"
+        ],
     ]
 ];

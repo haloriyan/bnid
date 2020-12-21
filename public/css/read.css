@@ -1,0 +1,54 @@
+body {
+    background-color: #fff;
+}
+.featuredImage {
+    position: absolute;
+    top: 70px;left: 0px;right: 0px;
+    height: 400px;
+}
+.featuredImage .content {
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    height: 400px;
+    padding: 50px;
+    box-sizing: border-box;
+    position: relative;
+}
+.featuredImage .content > div {
+    position: absolute;
+    bottom: 30px;left: 2.5%;right: 2.5%;
+}
+.featuredImage h1 {
+    margin: 0px;
+    margin-bottom: 20px;
+}
+.featuredImage .content div div {
+    font-size: 12px;
+}
+
+.container {
+    position: absolute;
+    top: 520px;left: 20%;right: 20%;
+    padding-bottom: 70px;
+}
+.container .content p {
+    font-size: 22px;
+    line-height: 35px;
+}
+
+.commentsArea {
+    position: relative;
+    left: 0%;right: 0%;
+}
+.comment {
+    width: 48% !important;
+    vertical-align: top;
+    display: inline-block;
+    display: inline-block;
+}
+
+@media (max-width: 480px) {
+    .container {
+        left: 2.5%;right: 2.5%;
+    }
+}

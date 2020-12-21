@@ -1,0 +1,21 @@
+body {
+    background-color: #fff;
+}
+.container {
+    position: absolute;
+    top: 50px;left: 0%;right: 0%;
+    padding-bottom: 0px;
+}
+.container h2 {
+    font-size: 40px;
+    color: #666;
+}
+
+.post { margin-bottom: 30px; }
+.post img {
+    width: 100%;
+}
+.post h3 {
+    font-size: 18px;
+    line-height: 25px;
+}
