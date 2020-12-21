@@ -33,7 +33,9 @@ insert('../Components/Admin/Header', [
                     <td><?= $cat->category ?></td>
                     <td><?= $cat->counter ?></td>
                     <td>
-                        <a href="#" class="teks-merah"><i class="fas fa-trash"></i></a>
+                        <a href="<?= route('category/'.$cat->id.'/delete') ?>" class="teks-merah">
+                            <i class="fas fa-trash"></i>
+                        </a>
                     </td>
                 </tr>
             <?php endforeach ?>

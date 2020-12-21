@@ -27,6 +27,7 @@ class CategoryController {
     }
     public function delete($id) {
         $deleteData = DB::table('categories')->delete()->where('id', '=', $id)->execute();
+        
         return redirect('admin/category', [
             'message' => "Kategori berhasil dihapus"
         ]);

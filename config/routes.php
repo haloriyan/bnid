@@ -23,6 +23,7 @@ return [
     'get-premium/success' => "GET:UserController@getPremiumSuccess",
 
     'category/{category}' => "GET:UserController@category",
+    'category/{category}/delete' => "GET:CategoryController@delete",
 
     'comment/store' => "POST:CommentController@store",
     'comment/{id}/delete' => "GET:CommentController@delete",

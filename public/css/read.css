@@ -31,6 +31,7 @@ body {
     top: 520px;left: 20%;right: 20%;
     padding-bottom: 70px;
 }
+.container img { width: 100%; }
 .container .content p {
     font-size: 22px;
     line-height: 35px;

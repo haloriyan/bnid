@@ -49,6 +49,7 @@ if (!$isPremium) {
         <div class="mt-2">Change Password :</div>
         <input type="password" class="box" name="password">
         <div class="mt-1 teks-transparan">(biarkan kosong jika tidak ingin mengganti password)</div>
+        <?= $myData->favorite_categories ?>
         <button class="oren lebar-100 mt-3">Update</button>
     </form>
 </div>
