@@ -231,7 +231,8 @@ class UserController {
         $myData = self::me();
 
         $toUpdate = [
-            'name' => $req->name
+            'name' => $req->name,
+            'favorite_categories' => $req->favorite_categories
         ];
         if ($req->password != "") {
             $toUpdate['password'] = $req->password;
