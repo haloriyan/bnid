@@ -24,6 +24,7 @@
         }
         ?>
         <?php insert('./Components/LatestPost'); ?>
+        <?php insert('./Components/PremiumPosts'); ?>
         <?php insert('./Components/Categories', ['categories' => $allCategories]); ?>
     </div>
     <?php insert('./Components/Footer'); ?>

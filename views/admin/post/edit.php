@@ -20,6 +20,7 @@
             background-color: #2ecc71;
             color: #fff;
         }
+        #preview img { width: 100%; }
     </style>
 </head>
 <body>

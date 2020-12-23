@@ -93,7 +93,6 @@ class UserController {
             $recommendedPosts = [];
             $recommendedPostID = [];
             
-            // header("Content-Type: application/json");
             foreach ($favoriteCategories as $category) {
                 if (count($recommendedPosts) < 6) {
                     $posts = PostCtrl::get([
@@ -111,12 +110,16 @@ class UserController {
         }
 
         $allCategories = CategoryCtrl::get()->get();
-        $latestPosts = PostCtrl::get()->paginate(12);
+        $latestPosts = PostCtrl::get()->paginate(12)->get();
+        $premiumPosts = PostCtrl::get([
+            ['is_premium', '=', 1]
+        ])->paginate(6)->get();
         
         return view('index', [
             'latestPosts' => $latestPosts,
             'recommendedPosts' => $recommendedPosts,
-            'allCategories'=> $allCategories
+            'allCategories'=> $allCategories,
+            'premiumPosts' => $premiumPosts,
         ]);
     }
     public function read($slug) {
@@ -217,9 +220,11 @@ class UserController {
     }
     public function account() {
         $myData = self::me();
+        $categories = CategoryCtrl::get()->get();
 
         return view('account', [
-            'myData' => $myData
+            'myData' => $myData,
+            'categories' => $categories
         ]);
     }
     public function updateAccount(Request $req) {
@@ -285,6 +290,13 @@ class UserController {
         return view('category', [
             'posts' => $posts,
             'category' => $category
+        ]);
+    }
+    public function latest() {
+        $posts = PostCtrl::get()->paginate(16);
+
+        return view('latest', [
+            'posts' => $posts
         ]);
     }
 }

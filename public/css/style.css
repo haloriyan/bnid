@@ -126,6 +126,7 @@ select.box:focus {
 .bg-biru-transparan { background-color: #3498db30;color: #2980b9; }
 .bg-oren { background-color: #f15b2d;;color: #fff; }
 .bg-oren-transparan { background-color: #d8491d30;color: #f15b2d; }
+.bg-oren-transparan:hover { background-color: #f15b2d;color: #fff; }
 .bg-primer { background-color: #095e6a;color: #fff; }
 
 .teks-merah { color: #e74c3c; }

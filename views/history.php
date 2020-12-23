@@ -16,22 +16,24 @@
 <?php insert('./Components/Header'); ?>
 
 <div class="container">
-    <h2>History</h2>
-    <?php foreach ($histories as $post) : ?>
-        <div class="bagi bagi-4">
-            <div class="wrap">
-                <a href="<?= route('read/'.$post->posts[0]->slug) ?>">
-                    <div class="item">
-                        <div class="wrap">
-                            <div class="tinggi-200 rounded" bg-image="<?= base_url() ?>/storage/featured_image/<?= $post->posts[0]->featured_image ?>"></div>
-                            <h3><?= $post->posts[0]->title ?></h3>
-                            <p class="teks-transparan"><?= $post->counter ?>x</p>
+    <div class="wrap">
+        <h2>History</h2>
+        <?php foreach ($histories as $post) : ?>
+            <div class="bagi bagi-4">
+                <div class="wrap">
+                    <a href="<?= route('read/'.$post->posts[0]->slug) ?>">
+                        <div class="item">
+                            <div class="wrap">
+                                <div class="tinggi-200 rounded" bg-image="<?= base_url() ?>/storage/featured_image/<?= $post->posts[0]->featured_image ?>"></div>
+                                <h3><?= $post->posts[0]->title ?></h3>
+                                <p class="teks-transparan"><?= $post->counter ?>x</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
-        </div>
-    <?php endforeach ?>
+        <?php endforeach ?>
+    </div>
 </div>
 
 <script src="<?= base_url() ?>/js/base.js"></script>

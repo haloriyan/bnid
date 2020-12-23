@@ -13,7 +13,9 @@
 <?php insert('./Components/Header'); ?>
 
 <div class="container">
-    <?php insert('./Components/SearchPost', ['q' => $q]); ?>
+    <div class="wrap">
+        <?php insert('./Components/SearchPost', ['q' => $q]); ?>
+    </div>
 </div>
 
 <script src="<?= base_url() ?>/js/base.js"></script>
