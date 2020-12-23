@@ -19,7 +19,7 @@
     <div class="wrap">
         <?php
         use App\Framework\Auth;
-        if (Auth::check()) {
+        if (Auth::guard('user')->check()) {
             insert('./Components/Recommendation');
         }
         ?>

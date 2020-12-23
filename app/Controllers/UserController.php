@@ -8,6 +8,7 @@ use App\Framework\Mailer;
 use App\Framework\Request;
 
 use App\Controllers\PostController as PostCtrl;
+use App\Controllers\SeriesController as SeriesCtrl;
 use App\Controllers\CommentController as CommentCtrl;
 use App\Controllers\HistoryController as HistoryCtrl;
 use App\Controllers\CategoryController as CategoryCtrl;
@@ -122,7 +123,7 @@ class UserController {
             'premiumPosts' => $premiumPosts,
         ]);
     }
-    public function read($slug) {
+    public function read($slug, Request $req) {
         $myData = self::me();
         $post = PostController::get([
             ['slug', '=', $slug]
@@ -145,6 +146,19 @@ class UserController {
             }
         }
 
+        if ($req->series_id != NULL) {
+            $series = SeriesCtrl::get([
+                ['id', '=', $req->series_id]
+            ])->first();
+
+            $contents = DB::table('series_posts')->select()
+            ->where('series_id', '=', $series->id)
+            ->with('posts', [
+                'id' => 'post_id'
+            ])
+            ->get();
+        }
+
         if ($post == "") {
             return view("error.404");
         }
@@ -164,6 +178,8 @@ class UserController {
         return view('read', [
             'post' => $post,
             'comments' => $comments,
+            'series' => $series,
+            'contents' => $contents,
             'relatedPosts' => $relatedPosts
         ]);
     }
@@ -298,6 +314,27 @@ class UserController {
 
         return view('latest', [
             'posts' => $posts
+        ]);
+    }
+    public function series($slug) {
+        $series = SeriesCtrl::get([
+            ['slug', '=', $slug]
+        ])
+        ->first();
+
+        $contents = DB::table('series_posts')->select()
+        ->where('series_id', '=', $series->id)
+        ->with('posts', [
+            'id' => 'post_id'
+        ])
+        ->get();
+
+        // echo json_encode($contents);
+        // die();
+
+        return view('series', [
+            'series' => $series,
+            'contents' => $contents
         ]);
     }
 }

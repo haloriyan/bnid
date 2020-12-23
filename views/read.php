@@ -35,16 +35,29 @@
     </div>
 </div>
 
-<div class="container">
+<?php
+$styleWhenOpeningSeries = "";
+if ($series_id != NULL) {
+    $styleWhenOpeningSeries = "left: 5%;right: 30%;";
+    insert("./Components/SeriesInfo", [
+        'series' => $series
+    ]);
+}
+?>
+<div class="container" style="<?= $styleWhenOpeningSeries ?>">
     <textarea class="d-none" name="body" id="body"><?= $post->body ?></textarea>
     <div class="content" id="postContent"></div>
 
     <?php insert("./Components/PostComment", ['comments' => $comments]) ?>
     <div class="mt-4"></div>
-    <?php insert("./Components/RelatedPost", [
-        'post' => $post,
-        'relatedPosts' => $relatedPosts
-    ]); ?>
+    <?php 
+    if ($series_id == NULL) {
+        insert("./Components/RelatedPost", [
+            'post' => $post,
+            'relatedPosts' => $relatedPosts
+        ]);
+    }
+    ?>
 </div>
 
 <script src="<?= base_url() ?>/js/base.js"></script>

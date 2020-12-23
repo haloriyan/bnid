@@ -64,6 +64,19 @@
 			"evidence varchar(255) not null",
 			"status int(1) not null",
 			"created_at TIMESTAMP not null"
+		],
+		"series": [
+			"id int(11) not null",
+			"title varchar(255) not null",
+			"slug varchar(55) not null",
+			"description text not null",
+			"created_at TIMESTAMP not null"
+		],
+		"series_posts": [
+			"id int(11) not null",
+			"series_id int(11) not null",
+			"post_id int(11) not null",
+			"created_at TIMESTAMP not null"
 		]
 	},
 	"attribute": {
@@ -74,6 +87,8 @@
 			"histories.id",
 			"comments.id",
 			"premium_requests.id",
+			"series.id",
+			"series_posts.id",
 			"posts.id"
 		],
 		"FOREIGN": [
@@ -82,6 +97,7 @@
 			"comments.post_id=>posts.id",
 			"comments.user_id=>users.id",
 			"premium_requests.user_id=>users.id",
+			"series_posts.post_id=>posts.id",
 			"posts.admin_id=>admins.id"
 		]
 	}

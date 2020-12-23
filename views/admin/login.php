@@ -20,7 +20,7 @@
         <div class="mt-2">Email :</div>
         <input type="email" class="box" name="email" required value="admin@gmail.com">
         <div class="mt-2">Password :</div>
-        <input type="password" class="box" name="password" required value="inikatasandi">
+        <input type="password" class="box" name="password" required value="sandinepodo">
         <button class="oren lebar-100 mt-3">Login</button>
     </form>
 </div>

@@ -10,6 +10,7 @@ use \Carbon\Carbon;
 use App\Controllers\Controller as App;
 use App\Controllers\PostController as PostCtrl;
 use App\Controllers\UserController as UserCtrl;
+use App\Controllers\SeriesController as SeriesCtrl;
 use App\Controllers\CommentController as CommentCtrl;
 use App\Controllers\CategoryController as CategoryCtrl;
 
@@ -136,6 +137,15 @@ class AdminController {
         return view('admin.post.comments', [
             'comments' => $comments,
             'post' => $post
+        ]);
+    }
+    public function series() {
+        $series = SeriesCtrl::get()->with('series_posts', [
+            'id' => 'post_id'
+        ]);
+        
+        return view('admin.series', [
+            'series' => $series
         ]);
     }
 }

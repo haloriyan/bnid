@@ -15,6 +15,7 @@ return [
     'logout' => "GET:UserController@logout",
     'history' => "GET:UserController@history",
     'loginWithGoogle' => "POST:UserController@loginWithGoogle",
+    'series/{slug}' => "GET:UserController@series",
     
     'get-started' => "GET:UserController@getStarted",
     'get-started/submit' => "POST:UserController@getStartedSubmit",
@@ -55,4 +56,12 @@ return [
     'admin/user/update' => "POST:AdminController@updateUser",
     
     'admin/acceptPremium/{userID}' => "GET:AdminController@acceptPremium",
+
+    'admin/series' => "GET:AdminController@series",
+    'admin/series/{id}/posts' => "GET:SeriesController@posts",
+    'admin/series/{id}/posts/add' => "POST:SeriesController@addPost",
+    'admin/series/{id}/posts/remove/{contentID}' => "GET:SeriesController@removePost",
+    'admin/series/searchPost' => "POST:SeriesController@searchPosts",
+    'admin/series/create' => "GET:SeriesController@create",
+    'admin/series/store' => "POST:SeriesController@store",
 ];

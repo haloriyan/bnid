@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="<?= base_url() ?>/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>/fa/css/all.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/css/dashboard.css">
+    <style>
+        table a { color: #444;text-decoration: underline; }
+    </style>
 </head>
 <body>
 
@@ -34,7 +37,11 @@ insert('../Components/Admin/Header', [
         <tbody>
             <?php foreach ($posts->get() as $post) : ?>
                 <tr>
-                    <td><?= $post->title ?></td>
+                    <td>
+                        <a href="<?= route('read/'.$post->slug) ?>" target="_blank">
+                            <?= $post->title ?>
+                        </a>
+                    </td>
                     <td><?= count($post->comments) ?></td>
                     <td>
                         <a href="<?= route('admin/post/'.$post->id.'/edit') ?>" class="teks-biru"><i class="fas fa-edit"></i></a>

@@ -29,7 +29,7 @@ use App\Framework\Auth;
                 <li>OVO 0881036183076 (Riyan Satria Adi Tama)</li>
             </ul>
         </p>
-        <?php if (Auth::check()) : ?>
+        <?php if (Auth::guard('user')->check()) : ?>
             <p>
                 Kemudian upload bukti transfer di sini dan tunggu admin mengaktifkan premium di akun kamu.
             </p>
