@@ -34,7 +34,7 @@
             email: email
         })
         .then(res => {
-            if (res.data.favorite_categories == "") {
+            if (res.data.favorite_categories == null) {
                 window.location = "<?= route('get-started') ?>"
             }else {
                 let ref = select("#ref").value;
