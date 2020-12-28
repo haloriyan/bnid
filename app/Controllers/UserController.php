@@ -329,12 +329,18 @@ class UserController {
         ])
         ->get();
 
-        // echo json_encode($contents);
-        // die();
-
         return view('series', [
             'series' => $series,
             'contents' => $contents
+        ]);
+    }
+    public function premium() {
+        $posts = PostCtrl::get([
+            ['is_premium', '=', 1]
+        ])->paginate(12);
+
+        return view('premium', [
+            'posts' => $posts
         ]);
     }
 }

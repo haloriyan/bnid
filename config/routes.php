@@ -7,6 +7,7 @@ return [
     },
     'read/{slug}' => "GET:UserController@read",
     'search' => "GET:UserController@search",
+    'premium' => "GET:UserController@premium",
     'latest' => "GET:UserController@latest",
     'account' => "GET:UserController@account",
     'account/update' => "POST:UserController@updateAccount",

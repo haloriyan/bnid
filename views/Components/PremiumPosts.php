@@ -13,3 +13,7 @@
         </div>
     </div>
 <?php endforeach ?>
+<br />
+<a href="<?= route('premium') ?>">
+    <button class="bg-oren-transparan p-1 pl-2 pr-2 tinggi-40">Eksplor lainnya</button>
+</a>
